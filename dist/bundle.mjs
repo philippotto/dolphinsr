@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import uuid from 'uuid-browser';
 
 // Generally all types should be considered opaque in application code.
 

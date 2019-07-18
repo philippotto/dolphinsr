@@ -1,6 +1,6 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('uuid')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'uuid'], factory) :
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('uuid-browser')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'uuid-browser'], factory) :
 	(factory((global.dolphinsr = global.dolphinsr || {}),global.uuid));
 }(this, (function (exports,uuid) { 'use strict';
 
