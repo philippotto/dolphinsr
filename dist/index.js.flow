@@ -105,9 +105,9 @@ export class DolphinSR {
     return this._cachedCardsSchedule;
   }
 
-  _nextCardId(): ?CardId {
+  _nextCardId(forceNext: boolean = false): ?CardId {
     const s = this._getCardsSchedule();
-    return pickMostDue(s, this._state);
+    return pickMostDue(s, this._state, forceNext);
   }
 
   _getCard(id: CardId): Card {
@@ -131,8 +131,8 @@ export class DolphinSR {
     };
   }
 
-  nextCard(): ?Card {
-    const cardId = this._nextCardId();
+  nextCard(forceNext: boolean = false): ?Card {
+    const cardId = this._nextCardId(forceNext);
     if (cardId == null) {
       return null;
     }

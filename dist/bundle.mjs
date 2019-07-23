@@ -92,7 +92,9 @@ function computeScheduleFromCardState(state, now) {
 //
 // Returns null if no cards are due.
 function pickMostDue(s, state) {
-  var prec = ['learning', 'overdue', 'due'];
+  var forceNext = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+  var prec = ['learning', 'overdue', 'due'].concat(forceNext ? ['later'] : []);
   for (var i = 0; i < prec.length; i += 1) {
     var sched = prec[i];
     if (s[sched].length) {
@@ -552,8 +554,10 @@ var DolphinSR = function () {
   }, {
     key: '_nextCardId',
     value: function _nextCardId() {
+      var forceNext = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
       var s = this._getCardsSchedule();
-      return pickMostDue(s, this._state);
+      return pickMostDue(s, this._state, forceNext);
     }
   }, {
     key: '_getCard',
@@ -596,7 +600,9 @@ var DolphinSR = function () {
   }, {
     key: 'nextCard',
     value: function nextCard() {
-      var cardId = this._nextCardId();
+      var forceNext = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      var cardId = this._nextCardId(forceNext);
       if (cardId == null) {
         return null;
       }
