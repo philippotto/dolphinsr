@@ -55,9 +55,9 @@ const MAX_INTERVAL = 365;
 const MIN_FACTOR = 0; // TODO
 const MAX_FACTOR = Number.MAX_VALUE;
 function constrainWithin(min, max, n) {
-  if (min > max) {
-    throw new Error(`min > max: ${min}=min, ${max}=max`);
-  }
+  // if (min > max) {
+  //   throw new Error(`min > max: ${min}=min, ${max}=max`);
+  // }
   return Math.max(Math.min(n, max), min);
 }
 
